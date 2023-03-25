@@ -11,6 +11,7 @@ import { Entypo } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState, useEffect } from "react";
+import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import {
   collection,
@@ -42,7 +43,7 @@ export default function AdminHome() {
     <ScrollView
       style={{ backgroundColor: "#fff", flex: 1, paddingHorizontal: 10 }}
     >
-      <View>
+      <View style={{}}>
         <Text style={styles.header2Text}>
           👋 Hai,
           {/* {worker_data.username} */}
@@ -75,43 +76,60 @@ export default function AdminHome() {
       <View
         style={{
           flexDirection: "row",
-          paddingVertical: 10,
-          paddingHorizontal: 10,
-          justifyContent: "center",
+          paddingVertical: 5,
+          paddingHorizontal: 5,
+          justifyContent: "space-between",
+          elevation: 0.5,
         }}
       >
         <TouchableOpacity
           style={{
-            backgroundColor: "#BEAFFE",
-            borderRadius: 15,
+            //backgroundColor: "#C9EEFF",
+            borderRadius: 5,
             marginRight: 5,
             height: 80,
-            width: "50%",
+            width: "30%",
             borderWidth: 2,
-            borderColor: "#AA77FF",
+            borderColor: "#332885",
             justifyContent: "center",
             alignItems: "center",
           }}
           onPress={() => navigation.navigate("ItemsShop")}
         >
-          <Entypo name="shop" size={24} color="black" />
-          <Text style={{ fontSize: 20 }}>Online Shop</Text>
+          <Entypo name="shop" size={35} color="#332885" />
+          <Text style={{ fontSize: 16, color: "#332885" }}>Online Shop</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
-            backgroundColor: "#97DEFF",
-            borderRadius: 15,
+            //backgroundColor: "#C9EEFF",
+            borderRadius: 5,
             height: 80,
-            width: "50%",
+            width: "30%",
             borderWidth: 2,
-            borderColor: "#537FE7",
+            borderColor: "#332885",
             justifyContent: "center",
             alignItems: "center",
           }}
           onPress={() => navigation.navigate("HomeBlogPage")}
         >
-          <FontAwesome5 name="blogger-b" size={24} color="black" />
-          <Text style={{ fontSize: 20 }}>Tech Blog</Text>
+          <FontAwesome5 name="blogger-b" size={35} color="#332885" />
+          <Text style={{ fontSize: 16, color: "#332885" }}>Tech Blog</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            //backgroundColor: "#C9EEFF",
+            borderRadius: 5,
+            height: 80,
+            width: "30%",
+            borderWidth: 2,
+            borderColor: "#332885",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          onPress={() => navigation.navigate("ViewAppointmentAdmin")}
+        >
+          <AntDesign name="calendar" size={35} color="#332885" />
+          <Text style={{ fontSize: 16, color: "#332885" }}>Appointment</Text>
         </TouchableOpacity>
       </View>
       <View>
@@ -220,7 +238,8 @@ const styles = StyleSheet.create({
   },
   header2Text: {
     marginLeft: 10,
-    marginVertical: 25,
+
+    marginBottom: 20,
     fontSize: 20,
     fontWeight: "bold",
   },
