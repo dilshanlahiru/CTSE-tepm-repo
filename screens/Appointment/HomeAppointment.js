@@ -44,7 +44,7 @@ export default function HomeAppointment() {
       await deleteDoc(UserDoc);
 
       ToastAndroid.show("successfully Deleted!", ToastAndroid.SHORT);
-      navigation.navigate("ItemsShop");
+      navigation.navigate("ClientHome");
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -122,10 +122,10 @@ export default function HomeAppointment() {
         renderItem={({ item }) => (
           <View style={styles.card}>
             <View style={styles.cardContent}>
-              {/* <Text style={styles.status}>{item.status}</Text> */}
+              <Text style={styles.status}>{item.status}</Text>
               <Text style={styles.title}>{item.reasons}</Text>
-              <Text style={styles.subtitle}>{item.date}</Text>
-              <Text style={styles.subtitle}>{item.time}</Text>
+              <Text style={styles.subtitle}>{item.name}</Text>
+              <Text style={styles.subtitle}>{item.phone}</Text>
               <Text style={styles.subtitle}>{item.discription}</Text>
             </View>
             <View style={styles.cardButtons}>

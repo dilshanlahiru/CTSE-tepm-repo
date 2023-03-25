@@ -12,53 +12,50 @@ import {
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../Firebase/Firebse-config";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { useNavigation } from "@react-navigation/native";
 
 export default function AppointmentBooking() {
+  const navigation = useNavigation();
   const [formData, setFormData] = useState({
-    date: new Date(),
-    showDatePicker: false,
     reasons: "",
     name: "",
     phone: "",
-    time: new Date(),
-    showTimePicker: false,
+    discription: "",
+    status: "Pending",
   });
 
-  const handleDateChange = (event, selectedDate) => {
-    const currentDate = selectedDate || formData.date;
-    setFormData({
-      ...formData,
-      showDatePicker: Platform.OS === "ios",
-      date: currentDate,
-    });
-  };
+  // const handleDateChange = (event, selectedDate) => {
+  //   const currentDate = selectedDate || formData.date;
+  //   setFormData({
+  //     ...formData,
+  //     showDatePicker: Platform.OS === "ios",
+  //     date: currentDate,
+  //   });
+  // };
 
-  const handleTimeChange = (event, selectedTime) => {
-    const currentTime = selectedTime || formData.time;
-    setFormData({
-      ...formData,
-      showTimePicker: Platform.OS === "ios",
-      time: currentTime,
-    });
-  };
+  // const handleTimeChange = (event, selectedTime) => {
+  //   const currentTime = selectedTime || formData.time;
+  //   setFormData({
+  //     ...formData,
+  //     showTimePicker: Platform.OS === "ios",
+  //     time: currentTime,
+  //   });
+  // };
 
   const handleBookAppointment = async () => {
     // Perform booking logic here
     try {
       const newItem = {
-        date: formData.date.toLocaleDateString(),
-        time: formData.time.toLocaleTimeString(),
         reasons: formData.reasons || "",
         name: formData.name || "",
         phone: formData.phone || "",
         discription: formData.discription || "",
+        status: "Pending",
       };
 
       await addDoc(collection(db, "Appointment"), newItem);
-      ToastAndroid.show(
-        "Your Item has been successfully posted.",
-        ToastAndroid.SHORT
-      );
+      ToastAndroid.show("Request Successful", ToastAndroid.SHORT);
+      navigation.navigate("ClientHome");
     } catch (error) {
       console.log(error.message);
     }
@@ -67,7 +64,7 @@ export default function AppointmentBooking() {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Book an Appointment</Text>
-      <View
+      {/* <View
         style={{
           flexDirection: "row",
           alignItems: "center",
@@ -88,8 +85,8 @@ export default function AppointmentBooking() {
             onChange={handleDateChange}
           />
         )}
-      </View>
-      <View
+      </View> */}
+      {/* <View
         style={{
           flexDirection: "row",
           alignItems: "center",
@@ -112,12 +109,8 @@ export default function AppointmentBooking() {
             onChange={handleTimeChange}
           />
         )}
-      </View>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter reasons"
-        onChangeText={(text) => setFormData({ ...formData, reasons: text })}
-      />
+      </View> */}
+
       <TextInput
         style={styles.input}
         placeholder="Enter name"
@@ -127,13 +120,19 @@ export default function AppointmentBooking() {
 
       <TextInput
         style={styles.input}
-        placeholder="Enter Phone"
+        placeholder="Enter Phone Number"
+        keyboardType="phone-pad"
         value={formData.phone}
         onChangeText={(text) => setFormData({ ...formData, phone: text })}
       />
       <TextInput
         style={styles.input}
-        placeholder="Enter Discription"
+        placeholder="Enter Reason"
+        onChangeText={(text) => setFormData({ ...formData, reasons: text })}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Enter Description"
         value={formData.discription}
         onChangeText={(text) => setFormData({ ...formData, discription: text })}
       />
@@ -155,7 +154,7 @@ export default function AppointmentBooking() {
         underlayColor="#0084fffa"
       >
         <Text style={{ fontSize: 20, fontWeight: "bold", color: "#fff" }}>
-          Book Appointment
+          Confirm
         </Text>
       </TouchableOpacity>
     </View>

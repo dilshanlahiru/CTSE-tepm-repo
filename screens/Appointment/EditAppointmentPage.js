@@ -19,13 +19,11 @@ export default function EditAppointmentPage({ route }) {
   const navigation = useNavigation();
   const id = item.id;
   const [formData, setFormData] = useState({
-    date: new Date(),
-    showDatePicker: false,
     reasons: "",
     name: "",
     phone: "",
-    time: new Date(),
-    showTimePicker: false,
+    discription: "",
+    status: "Pending",
   });
 
   useEffect(() => {
@@ -42,30 +40,10 @@ export default function EditAppointmentPage({ route }) {
     fetchData();
   }, []);
 
-  const handleDateChange = (event, selectedDate) => {
-    const currentDate = selectedDate || formData.date;
-    setFormData({
-      ...formData,
-      showDatePicker: Platform.OS === "ios",
-      date: currentDate,
-    });
-  };
-
-  const handleTimeChange = (event, selectedTime) => {
-    const currentTime = selectedTime || formData.time;
-    setFormData({
-      ...formData,
-      showTimePicker: Platform.OS === "ios",
-      time: currentTime,
-    });
-  };
-
   const handleBookAppointment = async () => {
     // Perform booking logic here
     try {
       await updateDoc(doc(db, "Appointment", id), {
-        date: formData?.date.toLocaleDateString(),
-        time: formData?.time.toLocaleTimeString(),
         reasons: formData?.reasons || "",
         name: formData?.name || "",
         phone: formData?.phone || "",
@@ -131,19 +109,20 @@ export default function EditAppointmentPage({ route }) {
       </View> */}
       <TextInput
         style={styles.input}
-        placeholder="Enter reasons"
+        placeholder="Enter Reason"
         onChangeText={(text) => setFormData({ ...formData, reasons: text })}
       />
       <TextInput
         style={styles.input}
-        placeholder="Enter name"
+        placeholder="Enter Name"
         value={formData.name}
         onChangeText={(text) => setFormData({ ...formData, name: text })}
       />
 
       <TextInput
         style={styles.input}
-        placeholder="Enter Phone"
+        placeholder="Enter Phone Number"
+        keyboardType="phone-pad"
         value={formData.phone}
         onChangeText={(text) => setFormData({ ...formData, phone: text })}
       />
@@ -171,7 +150,7 @@ export default function EditAppointmentPage({ route }) {
         underlayColor="#0084fffa"
       >
         <Text style={{ fontSize: 20, fontWeight: "bold", color: "#fff" }}>
-          Book Appointment
+          Update
         </Text>
       </TouchableOpacity>
     </View>

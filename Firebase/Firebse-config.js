@@ -8,13 +8,15 @@ import { getAuth } from "firebase/auth";
 import "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA-epGVgaQ-0gdki_uB-Dbm-qkc2pcqNo4",
-  authDomain: "uee-job-finder-project.firebaseapp.com",
-  projectId: "uee-job-finder-project",
-  storageBucket: "uee-job-finder-project.appspot.com",
-  messagingSenderId: "122421237502",
-  appId: "1:122421237502:web:0da7833527355e4e46b7af",
-  measurementId: "G-FG1JW11Z0X",
+  apiKey: "AIzaSyBm830sMsqGfFB2JxyY_OJiQrx_Z2sjDQI",
+  authDomain: "ctse-app1.firebaseapp.com",
+  databaseURL:
+    "https://ctse-app1-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "ctse-app1",
+  storageBucket: "ctse-app1.appspot.com",
+  messagingSenderId: "507123515577",
+  appId: "1:507123515577:web:3de01ec62973b59c1a5b68",
+  measurementId: "G-4B2Y4S43JB",
 };
 
 if (!firebase.apps.length) {

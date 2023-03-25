@@ -78,7 +78,7 @@ export default function app() {
         <stack.Navigator>
           {/* <stack.Screen name="Login" component={LoginHome} />
           <stack.Screen name="Sign Up" component={SignUpPage} /> */}
-          <stack.Screen
+          {/* <stack.Screen
             name="AdminHome"
             component={AdminHome}
             options={{
@@ -86,8 +86,8 @@ export default function app() {
               headerShadowVisible: false,
               headerRight: () => <LogoTitle />,
             }}
-          />
-          {/* <stack.Screen
+          /> */}
+          <stack.Screen
             name="ClientHome"
             component={ClientHome}
             options={{
@@ -95,7 +95,7 @@ export default function app() {
               headerShadowVisible: false,
               headerRight: () => <LogoTitle />,
             }}
-          /> */}
+          />
 
           <stack.Screen name="ItemsShop" component={ItemsShop} />
           <stack.Screen name="AddItems" component={AddItems} />
