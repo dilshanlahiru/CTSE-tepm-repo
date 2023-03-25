@@ -21,6 +21,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../../Firebase/Firebse-config";
+import { Linking } from "react-native";
 
 export default function ViewAppointmentAdmin() {
   const navigation = useNavigation();
@@ -44,7 +45,7 @@ export default function ViewAppointmentAdmin() {
       await updateDoc(stateUpdateRef, {
         status: "Accepted",
       });
-      ToastAndroid.show("successfully updated status!", ToastAndroid.SHORT);
+      ToastAndroid.show("Successfully updated status!", ToastAndroid.SHORT);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -86,6 +87,10 @@ export default function ViewAppointmentAdmin() {
         onPress: () => updateState2(item),
       },
     ]);
+  };
+
+  const Call = (item) => {
+    Linking.openURL(`tel:${item.phone}`);
   };
 
   if (loading) {
@@ -162,7 +167,13 @@ export default function ViewAppointmentAdmin() {
                 style={[styles.cardButton, { backgroundColor: "green" }]}
                 onPress={() => GetConfirmationAccepted(item)}
               >
-                <Text style={styles.cardButtonText}>Accepted</Text>
+                <Text style={styles.cardButtonText}>Accept</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.cardButton, { backgroundColor: "blue" }]}
+                onPress={() => Call(item)}
+              >
+                <Text style={styles.cardButtonText}>Call</Text>
               </TouchableOpacity>
             </View>
           </View>

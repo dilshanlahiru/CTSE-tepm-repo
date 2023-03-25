@@ -33,6 +33,7 @@ import ViewBlogDetailClient from "./screens/NewsBlogs/ViewBlogDetailClient";
 import EditAppointmentPage from "./screens/Appointment/EditAppointmentPage";
 import LoginHome from "./screens/authentication/Login";
 import SignUpPage from "./screens/authentication/SignUp";
+import ViewAppointmentAdmin from "./screens/Appointment/ViewAppointmentAdmin";
 
 const stack = createNativeStackNavigator();
 
@@ -78,7 +79,7 @@ export default function app() {
         <stack.Navigator>
           {/* <stack.Screen name="Login" component={LoginHome} />
           <stack.Screen name="Sign Up" component={SignUpPage} /> */}
-          {/* <stack.Screen
+          <stack.Screen
             name="AdminHome"
             component={AdminHome}
             options={{
@@ -86,8 +87,8 @@ export default function app() {
               headerShadowVisible: false,
               headerRight: () => <LogoTitle />,
             }}
-          /> */}
-          <stack.Screen
+          />
+          {/* <stack.Screen
             name="ClientHome"
             component={ClientHome}
             options={{
@@ -95,7 +96,7 @@ export default function app() {
               headerShadowVisible: false,
               headerRight: () => <LogoTitle />,
             }}
-          />
+          /> */}
 
           <stack.Screen name="ItemsShop" component={ItemsShop} />
           <stack.Screen name="AddItems" component={AddItems} />
@@ -123,6 +124,10 @@ export default function app() {
             component={AddAppointmentPage}
           />
           <stack.Screen name="HomeAppointment" component={HomeAppointment} />
+          <stack.Screen
+            name="ViewAppointmentAdmin"
+            component={ViewAppointmentAdmin}
+          />
           <stack.Screen name="ViewBlogsClient" component={ViewBlogsClient} />
           <stack.Screen
             name="ViewBlogDetailClient"

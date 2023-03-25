@@ -52,7 +52,7 @@ export default function EditAppointmentPage({ route }) {
 
       if (updateDoc) {
         ToastAndroid.show("Updated successfully!", ToastAndroid.SHORT);
-        navigation.navigate("DetailsUsedPeoductPage", { item });
+        navigation.navigate("ClientHome");
       }
     } catch (error) {
       console.log(error.message);
@@ -110,6 +110,7 @@ export default function EditAppointmentPage({ route }) {
       <TextInput
         style={styles.input}
         placeholder="Enter Reason"
+        value={formData.reasons}
         onChangeText={(text) => setFormData({ ...formData, reasons: text })}
       />
       <TextInput
@@ -128,7 +129,7 @@ export default function EditAppointmentPage({ route }) {
       />
       <TextInput
         style={styles.input}
-        placeholder="Enter Discription"
+        placeholder="Enter Description"
         value={formData.discription}
         onChangeText={(text) => setFormData({ ...formData, discription: text })}
       />
